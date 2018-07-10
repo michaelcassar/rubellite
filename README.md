@@ -2,6 +2,12 @@
 
 Rubellite is a dictionary data structure built for JavaScript
 
+### Installation
+
+```console
+npm i rubellite --save
+```
+
 ### Usage
 
 #### Instantiating an empty dictionary
