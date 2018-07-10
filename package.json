@@ -1,0 +1,32 @@
+{
+  "name": "rubellite",
+  "version": "1.0.0",
+  "description": "Rubellite is a dictionary data structure built for JavaScript",
+  "main": "rubellite.min.js",
+  "scripts": {
+    "test": "ava \".\\testing\\test.js\" --verbose --serial --no-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelcassar/rubellite.git"
+  },
+  "keywords": [
+    "rubellite",
+    "dictionary",
+    "data",
+    "structure"
+  ],
+  "author": "Michael Cassar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelcassar/rubellite/issues"
+  },
+  "homepage": "https://github.com/michaelcassar/rubellite#readme",
+  "devDependencies": {
+    "ava": "^1.0.0-beta.3",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^3.0.0"
+  }
+}
