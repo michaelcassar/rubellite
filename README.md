@@ -104,4 +104,4 @@ Utilising objects as values will ensure mutations when accessing the value via t
 
 ## Authors
 
-* **Michael Cassar** - [Twitter](https://www.twitter.com/cassarmichael)
+* **Michael Cassar** - [GitHub](https://github.com/michaelcassar), [Twitter](https://www.twitter.com/cassarmichael)
