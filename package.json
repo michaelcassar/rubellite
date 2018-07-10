@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/michaelcassar/rubellite#readme",
   "devDependencies": {
-    "ava": "^1.0.0-beta.3",
+    "ava": "^0.25.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
