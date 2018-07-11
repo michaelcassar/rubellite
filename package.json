@@ -1,6 +1,6 @@
 {
   "name": "rubellite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rubellite is a dictionary data structure built for JavaScript",
   "main": "rubellite.min.js",
   "scripts": {
