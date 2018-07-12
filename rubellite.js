@@ -34,20 +34,28 @@
             });
         };
 
-        var removeProto = function(obj) {
+        var objectAssign = function(target, obj, preserve) {
 
-            var target = Object.create(null);
+            var overwrite = !Boolean(preserve);
 
-            if (Boolean(Object.assign) && isFunction(Object.assign)) {
-                return Object.assign(target, obj);
+            if (Boolean(Object.assign) && isFunction(Object.assign) && overwrite) {
+                Object.assign(target, obj);
+                return;
             }
 
             for (key in obj) {
 
-                if (!obj.hasOwnProperty(key)) { continue; }
+                if (!obj.hasOwnProperty(key) || (!overwrite && key in target)) { continue; }
 
                 target[key] = obj[key];
             }
+        };
+
+        var removeProto = function(obj) {
+
+            var target = Object.create(null);
+
+            objectAssign(target, obj);
 
             return target;
         };
@@ -89,6 +97,15 @@
         context.replace = function(key, value) {
 
             insert(key, value, true);
+        };
+
+        context.feed = function(obj, preserve) {
+
+            if (!Boolean(obj) || !isObject(obj)) { return; }
+
+            objectAssign(data, obj, preserve);
+
+            count = Object.keys(data).length;
         };
 
         context.containsKey = function(key) {
