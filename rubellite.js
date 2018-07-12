@@ -134,7 +134,7 @@
         };
 
         context.recycle = function(obj) {
-            
+
             initialize(obj);
         };
     }
