@@ -7,16 +7,16 @@
         var data = Object.create(null);
         var count = 0;
 
-        var isString = function(obj) {
-            return Object.prototype.toString.call(obj) === "[object String]";
+        var isString = function(x) {
+            return Object.prototype.toString.call(x) === "[object String]";
         };
 
-        var isFunction = function(obj) {
-            return Object.prototype.toString.call(obj) === "[object Function]";
+        var isFunction = function(x) {
+            return Object.prototype.toString.call(x) === "[object Function]";
         };
         
-        var isObject = function(obj) {
-            return obj === Object(obj);
+        var isObject = function(x) {
+            return x === Object(x);
         };
 
         var isValidKey = function(key) {
@@ -25,45 +25,41 @@
 
         var objectValues = function(obj) {
 
-            if (!Boolean(Object.values) || !isFunction(Object.values)) {
-                
-                return Object.keys(obj).map(function(x) { 
-                    return obj[x]; 
-                });
+            if (Boolean(Object.values) && isFunction(Object.values)) {
+                return Object.values(obj);
             }
 
-            return Object.values(obj);
+            return Object.keys(obj).map(function(x) { 
+                return obj[x];
+            });
         };
 
         var removeProto = function(obj) {
 
             var target = Object.create(null);
 
-            if (!Boolean(Object.assign) || !isFunction(Object.assign)) {
-
-                for (key in obj) {
-
-                    if (!obj.hasOwnProperty(key)) {
-                        continue;
-                    }
-
-                    target[key] = obj[key];
-                }
-
-                return target;
+            if (Boolean(Object.assign) && isFunction(Object.assign)) {
+                return Object.assign(target, obj);
             }
 
-            return Object.assign(target, obj);
+            for (key in obj) {
+
+                if (!obj.hasOwnProperty(key)) { continue; }
+
+                target[key] = obj[key];
+            }
+
+            return target;
         };
 
         var insert = function(key, value, overwrite) {
 
             if (!isValidKey(key)) {
-                throw Error("ERR_RUBELLITE_001 : Key is invalid");
+                throw Error("ERR_RUBELLITE_001: Invalid key");
             }
 
             if (key in data && !overwrite) {
-                throw Error("ERR_RUBELLITE_002 : Key already exists");
+                throw Error("ERR_RUBELLITE_002: Key already exists");
             }
             
             if (!(key in data)) {
@@ -74,7 +70,7 @@
         };
 
         var initialize = function(obj) {
-            data = obj && isObject(obj) ? removeProto(obj) : Object.create(null);
+            data = Boolean(obj) && isObject(obj) ? removeProto(obj) : Object.create(null);
             count = Object.keys(data).length;
         };
 
@@ -117,7 +113,7 @@
             count--;
         };
 
-        context.getKeys = function() { 
+        context.getKeys = function() {
 
             return Object.keys(data);
         };
@@ -138,7 +134,7 @@
         };
 
         context.recycle = function(obj) {
-            
+
             initialize(obj);
         };
     }
