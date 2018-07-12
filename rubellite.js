@@ -70,7 +70,7 @@
         };
 
         var initialize = function(obj) {
-            data = obj && isObject(obj) ? removeProto(obj) : Object.create(null);
+            data = Boolean(obj) && isObject(obj) ? removeProto(obj) : Object.create(null);
             count = Object.keys(data).length;
         };
 

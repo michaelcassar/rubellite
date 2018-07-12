@@ -100,7 +100,7 @@ dictionary.recycle(obj);
 
 #### *Note about JavaScript primitive types*
 
-Utilising objects as values will ensure mutations when accessing the value via the seek function. If you decide to use a primitive type as a value, such as an integer type, updating it after using the seek function will not update the value inside the dictionary, in this case utilise the provided replace function to update key's value.
+Utilising objects as values will ensure mutations when accessing the value via the seek function. If you decide to use a primitive type as a value, such as an integer type, updating it after using the seek function will not update the value inside the dictionary, in this case utilise the provided replace function to update the key's value.
 
 ## Authors
 
