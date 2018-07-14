@@ -45,6 +45,30 @@ dictionary.add("thirdProperty", 123);
 dictionary.replace("thirdProperty", 456);
 ```
 
+#### Adding all key values in an object to the dictionary
+
+##### - Overwrite any key values which are already present in the dictionary
+
+```javascript
+var obj = { 
+    thirdProperty: "abc",
+    fourthProperty: 123
+};
+
+dictionary.feed(obj);
+```
+
+##### - Skip any key values which are already present in the dictionary
+
+```javascript
+var obj = { 
+    thirdProperty: "abc",
+    fourthProperty: 123
+};
+
+dictionary.feed(obj, true);
+```
+
 #### Checking if an item already exists
 
 ```javascript
@@ -100,8 +124,8 @@ dictionary.recycle(obj);
 
 #### *Note about JavaScript primitive types*
 
-Utilising objects as values will ensure mutations when accessing the value via the seek function. If you decide to use a primitive type as a value, such as an integer type, updating it after using the seek function will not update the value inside the dictionary, in this case utilise the provided replace function to update key's value.
+Utilising objects as values will ensure mutations when accessing the value via the seek function. If you decide to use a primitive type as a value, such as an integer type, updating it after using the seek function will not update the value inside the dictionary, in this case utilise the provided replace function to update the key's value.
 
-## Authors
+## Author
 
 * **Michael Cassar** - [GitHub](https://github.com/michaelcassar), [Twitter](https://www.twitter.com/cassarmichael)

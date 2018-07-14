@@ -212,6 +212,75 @@
         t.is(dictionary.getJson(), expected, "Expected getJson() to return " + expected);
     });
 
+    // Feed
+
+    test.serial("feed", (t) => {
+
+        dictionary.feed({
+            fourthProperty: "hello-changed",
+            fifthProperty: 789
+        });
+
+        t.pass();
+    });
+
+    test.serial("feed: preserve", (t) => {
+
+        dictionary.feed({
+            fourthProperty: "hello-changed-2",
+            fifthProperty: 1,
+            sixthProperty: "sixthProperty"
+        }, true);
+
+        t.pass();
+    });
+
+    test.serial("feed: count", (t) => {
+
+        t.is(dictionary.count(), 6, "Expected count() to return 6");
+    });
+
+    test.serial("feed: getKeys", (t) => {
+
+        var expected = ["firstProperty","secondProperty","thirdProperty","fourthProperty","fifthProperty","sixthProperty"];
+
+        t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
+    });
+
+    test.serial("feed: getValues", (t) => {
+
+        var expected = [
+            false,
+            { 
+                propx: "abcd",
+                propy: 1234
+            },
+            55,
+            "hello-changed",
+            789,
+            "sixthProperty"
+        ];
+
+        t.deepEqual(dictionary.getValues(), expected, "Expected getValues() to return " + JSON.stringify(expected));
+    });
+
+    test.serial("feed: getJson", (t) => {
+
+        var expected = JSON.stringify({ 
+            firstProperty: false,
+            secondProperty: { 
+                propx: "abcd",
+                propy: 1234
+            },
+            thirdProperty: 55,
+            fourthProperty: "hello-changed",
+            fifthProperty: 789,
+            sixthProperty: "sixthProperty"
+        });
+
+        t.is(dictionary.getJson(), expected, "Expected getJson() to return " + expected);
+    });
+
     // Contains Key
 
     test.serial("containsKey: exists", (t) => {
@@ -256,12 +325,12 @@
 
     test.serial("remove: count", (t) => {
 
-        t.is(dictionary.count(), 3, "Expected count() to return 3");
+        t.is(dictionary.count(), 5, "Expected count() to return 5");
     });
 
     test.serial("remove: getKeys", (t) => {
 
-        var expected = ["firstProperty","secondProperty","fourthProperty"];
+        var expected = ["firstProperty","secondProperty","fourthProperty", "fifthProperty", "sixthProperty"];
 
         t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
     });
@@ -274,7 +343,9 @@
                 propx: "abcd",
                 propy: 1234
             },
-            "hello"
+            "hello-changed",
+            789,
+            "sixthProperty"
         ];
 
         t.deepEqual(dictionary.getValues(), expected, "Expected getValues() to return " + JSON.stringify(expected));
@@ -288,7 +359,9 @@
                 propx: "abcd",
                 propy: 1234
             },
-            fourthProperty: "hello"
+            fourthProperty: "hello-changed",
+            fifthProperty: 789,
+            sixthProperty: "sixthProperty"
         });
 
         t.is(dictionary.getJson(), expected, "Expected getJson() to return " + expected);
