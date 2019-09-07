@@ -128,4 +128,4 @@ Utilising objects as values will ensure mutations when accessing the value via t
 
 ## Author
 
-* **Michael Cassar** - [GitHub](https://github.com/michaelcassar), [Twitter](https://www.twitter.com/cassarmichael)
+**Michael Cassar** - [GitHub](https://github.com/michaelcassar), [NPM](https://www.npmjs.com/package/rubellite), [Twitter](https://www.twitter.com/cassarmichael)
