@@ -1,14 +1,14 @@
-(function() { 
+(function () {
 
     const test = require("ava");
     const rubellite = require("../rubellite.min.js");
 
     var dictionary = null;
-        
+
     // Init - Empty
 
     test.serial("init-empty", (t) => {
-        
+
         dictionary = new rubellite();
 
         t.pass();
@@ -38,11 +38,11 @@
 
     test.serial("init-object", (t) => {
 
-        dictionary = new rubellite({ 
+        dictionary = new rubellite({
             firstProperty: false,
-            secondProperty: { 
+            secondProperty: {
                 propx: "abc",
-                propy: 123 
+                propy: 123
             }
         });
 
@@ -56,7 +56,7 @@
 
     test.serial("init-object: getKeys", (t) => {
 
-        var expected = ["firstProperty","secondProperty"];
+        var expected = ["firstProperty", "secondProperty"];
 
         t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
     });
@@ -65,7 +65,7 @@
 
         var expected = [
             false,
-            { 
+            {
                 propx: "abc",
                 propy: 123
             }
@@ -76,11 +76,11 @@
 
     test.serial("init-object: getJson", (t) => {
 
-        var expected = JSON.stringify({ 
+        var expected = JSON.stringify({
             firstProperty: false,
-            secondProperty: { 
+            secondProperty: {
                 propx: "abc",
-                propy: 123 
+                propy: 123
             }
         });
 
@@ -102,9 +102,9 @@
 
             dictionary.add(1234, 5678);
         }
-        catch(e) { t.pass(); }
+        catch (e) { t.pass(); }
     });
-    
+
     test.serial("add: count", (t) => {
 
         t.is(dictionary.count(), 3, "Expected count() to return 3");
@@ -112,7 +112,7 @@
 
     test.serial("add: getKeys", (t) => {
 
-        var expected = ["firstProperty","secondProperty","thirdProperty"];
+        var expected = ["firstProperty", "secondProperty", "thirdProperty"];
 
         t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
     });
@@ -121,7 +121,7 @@
 
         var expected = [
             false,
-            { 
+            {
                 propx: "abc",
                 propy: 123
             },
@@ -133,11 +133,11 @@
 
     test.serial("add: getJson", (t) => {
 
-        var expected = JSON.stringify({ 
+        var expected = JSON.stringify({
             firstProperty: false,
-            secondProperty: { 
+            secondProperty: {
                 propx: "abc",
-                propy: 123 
+                propy: 123
             },
             thirdProperty: 50
         });
@@ -145,15 +145,15 @@
         t.is(dictionary.getJson(), expected, "Expected getJson() to return " + expected);
     });
 
-    // Replace 
+    // Replace
 
     test.serial("replace", (t) => {
 
         dictionary.replace("thirdProperty", 55);
 
-        dictionary.replace("secondProperty", { 
+        dictionary.replace("secondProperty", {
             propx: "abcd",
-            propy: 1234 
+            propy: 1234
         });
 
         dictionary.replace("fourthProperty", "hello");
@@ -167,9 +167,9 @@
 
             dictionary.replace(undefined, true);
         }
-        catch(e) { t.pass(); }
+        catch (e) { t.pass(); }
     });
-    
+
     test.serial("replace: count", (t) => {
 
         t.is(dictionary.count(), 4, "Expected count() to return 4");
@@ -177,7 +177,7 @@
 
     test.serial("replace: getKeys", (t) => {
 
-        var expected = ["firstProperty","secondProperty","thirdProperty","fourthProperty"];
+        var expected = ["firstProperty", "secondProperty", "thirdProperty", "fourthProperty"];
 
         t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
     });
@@ -186,7 +186,7 @@
 
         var expected = [
             false,
-            { 
+            {
                 propx: "abcd",
                 propy: 1234
             },
@@ -199,9 +199,9 @@
 
     test.serial("replace: getJson", (t) => {
 
-        var expected = JSON.stringify({ 
+        var expected = JSON.stringify({
             firstProperty: false,
-            secondProperty: { 
+            secondProperty: {
                 propx: "abcd",
                 propy: 1234
             },
@@ -242,7 +242,7 @@
 
     test.serial("feed: getKeys", (t) => {
 
-        var expected = ["firstProperty","secondProperty","thirdProperty","fourthProperty","fifthProperty","sixthProperty"];
+        var expected = ["firstProperty", "secondProperty", "thirdProperty", "fourthProperty", "fifthProperty", "sixthProperty"];
 
         t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
     });
@@ -251,7 +251,7 @@
 
         var expected = [
             false,
-            { 
+            {
                 propx: "abcd",
                 propy: 1234
             },
@@ -266,9 +266,9 @@
 
     test.serial("feed: getJson", (t) => {
 
-        var expected = JSON.stringify({ 
+        var expected = JSON.stringify({
             firstProperty: false,
-            secondProperty: { 
+            secondProperty: {
                 propx: "abcd",
                 propy: 1234
             },
@@ -330,7 +330,7 @@
 
     test.serial("remove: getKeys", (t) => {
 
-        var expected = ["firstProperty","secondProperty","fourthProperty", "fifthProperty", "sixthProperty"];
+        var expected = ["firstProperty", "secondProperty", "fourthProperty", "fifthProperty", "sixthProperty"];
 
         t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
     });
@@ -339,7 +339,7 @@
 
         var expected = [
             false,
-            { 
+            {
                 propx: "abcd",
                 propy: 1234
             },
@@ -353,9 +353,9 @@
 
     test.serial("remove: getJson", (t) => {
 
-        var expected = JSON.stringify({ 
+        var expected = JSON.stringify({
             firstProperty: false,
-            secondProperty: { 
+            secondProperty: {
                 propx: "abcd",
                 propy: 1234
             },
@@ -366,10 +366,10 @@
 
         t.is(dictionary.getJson(), expected, "Expected getJson() to return " + expected);
     });
-    
+
     // Recycle
 
-    var functionProperty = function() { return 0; };
+    var functionProperty = function () { return 0; };
 
     test.serial("recycle", (t) => {
 
@@ -389,7 +389,7 @@
 
     test.serial("recycle: getKeys", (t) => {
 
-        var expected = ["propa","propb","propc"];
+        var expected = ["propa", "propb", "propc"];
 
         t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
     });
@@ -407,7 +407,7 @@
 
     test.serial("recycle: getJson", (t) => {
 
-        var expected = JSON.stringify({ 
+        var expected = JSON.stringify({
             propa: "a",
             propb: undefined,
             function() { return 0; }
@@ -421,7 +421,7 @@
     test.serial("mutate", (t) => {
 
         dictionary.recycle({
-            propa: { 
+            propa: {
                 firstProperty: "prop1",
                 secondProperty: 123
             },
@@ -441,7 +441,7 @@
         pc = "hello-world";
 
         var pd = dictionary.seek("propd");
-        pd = { 
+        pd = {
             a: "a",
             b: "b"
         };
@@ -456,7 +456,7 @@
 
     test.serial("mutate: getKeys", (t) => {
 
-        var expected = ["propa","propb","propc","propd"];
+        var expected = ["propa", "propb", "propc", "propd"];
 
         t.deepEqual(dictionary.getKeys(), expected, "Expected getKeys() to return " + JSON.stringify(expected));
     });
@@ -464,7 +464,7 @@
     test.serial("mutate: getValues", (t) => {
 
         var expected = [
-            { 
+            {
                 firstProperty: "firstProperty",
                 secondProperty: 789
             },
@@ -479,7 +479,7 @@
     test.serial("mutate: getJson", (t) => {
 
         var expected = JSON.stringify({
-            propa: { 
+            propa: {
                 firstProperty: "firstProperty",
                 secondProperty: 789
             },
@@ -494,7 +494,7 @@
     // Clear
 
     test.serial("clear", (t) => {
-        
+
         dictionary.clear();
 
         t.pass();
@@ -523,8 +523,8 @@
     // Proto
 
     test.serial("proto", (t) => {
-        
-        var testObject = { };
+
+        var testObject = {};
 
         dictionary = new rubellite({
             propa: 123,
