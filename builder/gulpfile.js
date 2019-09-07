@@ -6,10 +6,10 @@ var pump = require("pump");
 gulp.task("build", function (cb) {
     
     pump([
-        gulp.src("..\\rubellite.js"),
+        gulp.src("../rubellite.js"),
         uglify(),
         rename("rubellite.min.js"),
-        gulp.dest("..\\")
+        gulp.dest("../")
     ], cb);
 
 });
