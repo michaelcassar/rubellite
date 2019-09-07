@@ -4,8 +4,8 @@
   "description": "Rubellite is a dictionary data structure built for JavaScript",
   "main": "rubellite.min.js",
   "scripts": {
-    "build": "cd ../builder && gulp build",
-    "test": "ava \"../testing/test.js\" --verbose --serial --no-cache"
+    "build": "cd builder && gulp build",
+    "test": "ava \"testing/test.js\" --verbose --serial --no-cache"
   },
   "repository": {
     "type": "git",
