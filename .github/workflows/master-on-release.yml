@@ -2,9 +2,9 @@ name: Release
 
 on:
   release:
+    branches:
+    - master
     types: [published]
-  branches:
-  - master
 
 jobs:
   build:
