@@ -49,6 +49,6 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@michaelcassar'
-     - run: npm publish
-       env:
-         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
